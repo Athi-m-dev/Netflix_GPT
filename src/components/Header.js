@@ -7,6 +7,8 @@ import { auth } from "../utils/firebase";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { USER_AVATAR } from "../utils/constants";
+import { setLanguage } from "../utils/languageSlice";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,13 +25,12 @@ const Header = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email, displayName, photoURL } = user;
+        const { uid, email, displayName} = user;
         dispatch(
           addUser({
             uid: uid,
             email: email,
             displayName: displayName,
-            photoURL: photoURL,
           })
         );
         navigate("/browse");
@@ -39,7 +40,6 @@ const Header = () => {
       }
     });
 
-    // Unsiubscribe when component unmounts
     return () => unsubscribe();
   }, []);
 
@@ -48,12 +48,23 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
 
+  const handleLanguageChange = (event) => {
+    const selectedLanguage = event.target.value;
+    dispatch(setLanguage(selectedLanguage));
+  };
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between items-center">
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
       {user && (
         <div className="flex items-center space-x-4">
+          <select onChange={handleLanguageChange} className="bg-gray-800 text-white rounded-lg px-4 py-2">
+            {SUPPORTED_LANGUAGES.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
           <button
             className="py-2 px-4 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
