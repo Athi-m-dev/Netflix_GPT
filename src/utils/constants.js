@@ -1,4 +1,3 @@
-import OpenAI from "openai";
 
 export const LOGO =
   "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
@@ -27,5 +26,6 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "sp", name: "Español" },
 ];
 
-export const OPENAI_KEYS = "sk-mnopabcd1234efghmnopabcd1234efghmnopabcd"
+export const GEMINI_KEYS = "AIzaSyCeQN1wz0QPIkJRFE-9l8n2My45q1IenFQ";
 
+//sk-proj-mnopabcd1234efghmnopabcd1234efghmnopabcd

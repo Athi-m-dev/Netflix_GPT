@@ -69,7 +69,7 @@ const Header = () => {
             className="py-2 px-4 bg-purple-800 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
-            {showGptSearch ? "Homepage" : "GPT Search"}
+            {showGptSearch ? "Homepage" : "Gemini Search"}
           </button>
           <img
             className="hidden md:block w-12 h-12"

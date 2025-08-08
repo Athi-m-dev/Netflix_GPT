@@ -14,7 +14,6 @@ const moviesSlice = createSlice({
     },
     addPopularMovies: (state, action) => {
       state.popularMovies = action.payload;
-      console.log("Popular movies added:", action.payload);
     },
     addTrendingMovies: (state, action) => {
       state.trendingMovies = action.payload;
