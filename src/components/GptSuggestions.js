@@ -13,7 +13,6 @@ const GptSuggestions = () => {
       </div>
     </div>
   )
-
 }
 
 export default GptSuggestions
